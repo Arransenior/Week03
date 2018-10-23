@@ -1,32 +1,39 @@
 package genericMethods;
 
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.*;
+import java.util.Arrays;
 
-/**
- * Created by u1758442 on 16/10/2018.
- */
-public class SwapTest {
+import static org.junit.jupiter.api.Assertions.*;
 
 
-    String[] names;
-    public void setUp() throws Exception {
-        this.names = new String[]{"Sam", "Ben", "Will", "Rich"};
+class SwapTest {
+    private Integer[] ints;
 
+    private String[] phoneticAlphabet;
 
+    @BeforeEach
+    void setUp() {
+        this.ints = new Integer[]{1, 2, 3, 4};
+        this.phoneticAlphabet = new String[]{"Alpha", "Bravo", "Charlie", "Delta"};
     }
 
-    @After
-    public void tearDown() throws Exception {
+    @AfterEach
+    void tearDown() {
+        this.ints = null;
+        this.phoneticAlphabet = null;
     }
 
     @Test
-    public void swap() throws Exception {
-        Swap.swap(names,1,2);
-        System.out.println(names);
+    void swapPhoneticAlphabet() {
+        assertArrayEquals(Swap.swap(this.phoneticAlphabet, 1, 2), new String[]{"Alpha", "Charlie", "Bravo", "Delta"});
+    }
+
+    @Test
+    void swapInts() {
+        assertArrayEquals(Swap.swap(this.ints, 1, 2), new Integer[]{1, 3, 2, 4});
     }
 
 }
