@@ -27,13 +27,25 @@ class SwapTest {
     }
 
     @Test
-    void swapPhoneticAlphabet() {
+    void swapAlphabet() {
         assertArrayEquals(Swap.swap(this.phoneticAlphabet, 1, 2), new String[]{"Alpha", "Charlie", "Bravo", "Delta"});
     }
 
     @Test
-    void swapInts() {
+    void swapInterger() {
         assertArrayEquals(Swap.swap(this.ints, 1, 2), new Integer[]{1, 3, 2, 4});
     }
+
+    @Test
+    void swapNegetive(){
+        assertArrayEquals(Swap.swap(this.ints, 1, 2), new Integer[]{-1, -3, -2, -4});
+    }
+
+    @Test
+    void NegetiveIndex(){
+        assertArrayEquals(Swap.swap(this.ints, -1, -2), new Integer[]{-1, -3, -2, -4});
+    }
+
+
 
 }
